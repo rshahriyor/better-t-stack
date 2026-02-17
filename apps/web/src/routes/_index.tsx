@@ -1,4 +1,4 @@
-import type { Route } from "./+types/_index";
+import type { MetaArgs } from "react-router";
 
 const TITLE_TEXT = `
  ██████╗ ███████╗████████╗████████╗███████╗██████╗
@@ -16,7 +16,7 @@ const TITLE_TEXT = `
     ╚═╝       ╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝
  `;
 
-export function meta({}: Route.MetaArgs) {
+export function meta({}: MetaArgs) {
   return [
     { title: "better-t-stack" },
     { name: "description", content: "better-t-stack is a web application" },
