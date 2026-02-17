@@ -1,0 +1,31 @@
+// Better-T-Stack
+//
+// Website: https://www.better-t-stack.dev/
+// Stack Builder: https://www.better-t-stack.dev/new
+// Analytics: https://www.better-t-stack.dev/analytics
+// Showcase: https://www.better-t-stack.dev/showcase
+// Sponsor: https://github.com/sponsors/AmanVarshney01
+//
+// Add new addons with: npx create-better-t-stack add
+// This file is safe to delete
+
+{
+  "$schema": "https://r2.better-t-stack.dev/schema.json",
+  "version": "3.21.0",
+  "createdAt": "2026-02-17T10:12:34.529Z",
+  "reproducibleCommand": "npx create-better-t-stack@latest better-t-stack --frontend react-router --backend fastify --runtime node --database sqlite --orm drizzle --api none --auth none --payments none --addons none --examples none --db-setup none --web-deploy none --server-deploy none --git --package-manager npm --install",
+  "database": "sqlite",
+  "orm": "drizzle",
+  "backend": "fastify",
+  "runtime": "node",
+  "frontend": ["react-router"],
+  "addons": [],
+  "examples": [],
+  "auth": "none",
+  "payments": "none",
+  "packageManager": "npm",
+  "dbSetup": "none",
+  "api": "none",
+  "webDeploy": "none",
+  "serverDeploy": "none",
+}
