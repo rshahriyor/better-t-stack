@@ -1,6 +1,7 @@
 import { env } from "@better-t-stack/env/server";
 import fastifyCors from "@fastify/cors";
 import Fastify from "fastify";
+import authRoute from "./modules/auth/auth.route";
 
 const baseCorsConfig = {
   origin: env.CORS_ORIGIN,
@@ -19,6 +20,8 @@ fastify.register(fastifyCors, baseCorsConfig);
 fastify.get("/", async () => {
   return "OK";
 });
+
+fastify.register(authRoute, { prefix: "/api/auth" });
 
 fastify.listen({ port: 3000 }, (err) => {
   if (err) {

@@ -7,7 +7,11 @@ export const env = createEnv({
     DATABASE_URL: z.string().min(1),
     CORS_ORIGIN: z.url(),
     NODE_ENV: z.enum(["development", "production", "test"]).default("development"),
+    BETTER_AUTH_URL: z.string(),
+    BETTER_AUTH_SECRET: z.string(),
+    GOOGLE_CLIENT_ID: z.string(),
+    GOOGLE_CLIENT_SECRET: z.string()
   },
   runtimeEnv: process.env,
-  emptyStringAsUndefined: true,
+  emptyStringAsUndefined: false,
 });
