@@ -4,17 +4,40 @@ import { InputText } from "primereact/inputtext"
 import { Password } from "primereact/password"
 import { useState } from "react"
 import './login.css'
+import type { MetaArgs } from "react-router"
+import { authClient } from "@/lib/auth-client"
+
+export function meta({ }: MetaArgs) {
+    return [
+        { title: "Login | better-t-stack" },
+        { name: "description", content: "better-t-stack is a web application" },
+    ];
+}
 
 const Login = () => {
     const [login, setLogin] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const { data } = authClient.useSession();
 
-    const submit = () => {
+    const signInWithGoogle = async () => {
+        const result = await authClient.signIn.social({
+            provider: "google",
+            callbackURL: 'http://localhost:4200/login',
+        });
+        console.log(result);
+    };
 
-    }
+    const signInWithEmail = async () => {
+        const result = await authClient.signIn.email({
+            email: login,
+            password
+        })
+        console.log(result);
+    };
 
     return (
         <section className='flex items-center justify-center w-full h-screen bg-(--surface-ground)'>
+            {data && <h1>Loged in</h1>}
             <div className="max-w-140 w-full rounded-[56px] bg-[linear-gradient(180deg,var(--primary-color)_10%,transparent_30%)] p-1">
                 <form className='custom-login w-full flex flex-col gap-10 p-17.5 rounded-[53px] bg-white'>
                     {/* <Logo className='text-[50px]' /> */}
@@ -36,7 +59,8 @@ const Login = () => {
                             <label htmlFor="password">Пароль</label>
                         </FloatLabel>
                     </div>
-                    <Button type="button" label="Войти" icon='pi pi-sign-in' className="p-button-primary text-center w-full justify-center" onClick={submit} />
+                    <Button type="button" label="Войти" icon='pi pi-sign-in' className="p-button-primary text-center w-full justify-center" onClick={signInWithEmail} />
+                    <Button type="button" icon='pi pi-google' label="Войти с помощью Google" severity="secondary" outlined onClick={signInWithGoogle} />
                 </form>
             </div>
         </section>
