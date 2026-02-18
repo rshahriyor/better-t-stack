@@ -1,0 +1,10 @@
+.custom-auth-input {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.custom-login .p-password .p-icon-field {
+    width: 100%;
+}

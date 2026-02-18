@@ -1,7 +1,10 @@
-import { MainLayout } from "@/layout/main-layout";
+import { Outlet } from "react-router";
+import { PrimeReactProvider } from 'primereact/api';
 
 export default function App() {
   return (
-    <MainLayout />
+    <PrimeReactProvider>
+      <Outlet />
+    </PrimeReactProvider>
   );
 }

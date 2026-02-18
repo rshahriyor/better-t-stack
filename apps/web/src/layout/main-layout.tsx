@@ -1,7 +1,7 @@
 import { Sidebar, Header } from "@/widgets";
 import { Outlet } from "react-router";
 
-export const MainLayout = () => {
+const MainLayout = () => {
     return (
         <main>
             <Header />
@@ -16,3 +16,5 @@ export const MainLayout = () => {
         </main>
     )
 }
+
+export default MainLayout
