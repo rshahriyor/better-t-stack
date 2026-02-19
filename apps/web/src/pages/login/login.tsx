@@ -6,7 +6,7 @@ import { useState } from "react"
 import './login.css'
 import type { MetaArgs } from "react-router"
 import { authClient } from "@/lib/auth-client"
-import { signInWithEmail, signInWithGoogle } from "./login.service"
+import { signInWithEmail, signInWithGoogle, signUpWithEmail } from "./login.service"
 
 export function meta({ }: MetaArgs) {
     return [
@@ -25,7 +25,11 @@ const Login = () => {
     }
 
     const signInEmail = () => {
-        signInWithEmail(login, password);
+        signInWithEmail({email: login, password});
+    }
+
+    const singUp = () => {
+        signUpWithEmail({basicSignInData: {email: login, password}, name: ''})
     }
 
     return (
