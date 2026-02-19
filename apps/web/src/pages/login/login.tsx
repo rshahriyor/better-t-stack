@@ -6,6 +6,7 @@ import { useState } from "react"
 import './login.css'
 import type { MetaArgs } from "react-router"
 import { authClient } from "@/lib/auth-client"
+import { signInWithEmail, signInWithGoogle } from "./login.service"
 
 export function meta({ }: MetaArgs) {
     return [
@@ -19,21 +20,13 @@ const Login = () => {
     const [password, setPassword] = useState<string>('');
     const { data } = authClient.useSession();
 
-    const signInWithGoogle = async () => {
-        const result = await authClient.signIn.social({
-            provider: "google",
-            callbackURL: 'http://localhost:4200/login',
-        });
-        console.log(result);
-    };
+    const signInGoogle = () => {
+        signInWithGoogle();
+    }
 
-    const signInWithEmail = async () => {
-        const result = await authClient.signIn.email({
-            email: login,
-            password
-        })
-        console.log(result);
-    };
+    const signInEmail = () => {
+        signInWithEmail(login, password);
+    }
 
     return (
         <section className='flex items-center justify-center w-full h-screen bg-(--surface-ground)'>
@@ -59,8 +52,8 @@ const Login = () => {
                             <label htmlFor="password">Пароль</label>
                         </FloatLabel>
                     </div>
-                    <Button type="button" label="Войти" icon='pi pi-sign-in' className="p-button-primary text-center w-full justify-center" onClick={signInWithEmail} />
-                    <Button type="button" icon='pi pi-google' label="Войти с помощью Google" severity="secondary" outlined onClick={signInWithGoogle} />
+                    <Button type="button" label="Войти" icon='pi pi-sign-in' className="p-button-primary text-center w-full justify-center" onClick={signInEmail} />
+                    <Button type="button" icon='pi pi-google' label="Войти с помощью Google" severity="secondary" outlined onClick={signInGoogle} />
                 </form>
             </div>
         </section>

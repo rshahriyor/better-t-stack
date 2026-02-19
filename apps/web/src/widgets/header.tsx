@@ -1,3 +1,5 @@
+import { authClient } from "@/lib/auth-client";
+
 export const Header = () => {
 
   return (
@@ -12,6 +14,7 @@ export const Header = () => {
               <i className={`${page.icon} cursor-pointer`}></i>
             </Link>
           ))} */}
+          <i className="pi pi-sign-out cursor-pointer" onClick={() => authClient.signOut()}></i>
         </div>
       </div>
     </header>
