@@ -19,6 +19,7 @@ export const user = sqliteTable(
         image: text("image"),
         createdAt: createdAtColumn,
         updatedAt: updatedAtColumn,
+        role: text("role").default("user")
     },
     (table) => [uniqueIndex("user_email_unique").on(table.email)],
 );
